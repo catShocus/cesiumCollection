@@ -1,14 +1,12 @@
 <template>
   <div id="app">
     <header>
-      <i class="iconfont icon-diqiu"></i>
+      <i class="iconfont icon-diqiu" @click="toHome"></i>
       <h3>Cesium Template for JavaScript</h3>
     </header>
 
     <PublicMenu class="app-slider"></PublicMenu>
-
-    <router-link to="'/"></router-link>
-    <router-link to="/test"></router-link>
+    
     <router-view></router-view>
   </div>
 </template>
@@ -16,9 +14,15 @@
 <script setup>
 import * as Cesium from "cesium";
 import { onMounted } from "vue";
+import { useRouter } from "vue-router";
 import OpenMap from "./components/OpenMap.vue";
 import PublicMenuVue from "./components/PublicMenu.vue";
-onMounted(() => {});
+
+//路由跳转
+const router = useRouter()
+const toHome = () => {
+  router.push({path:'/'})
+}
 </script>
 
 <style scoped lang="scss">
@@ -37,6 +41,7 @@ header {
   // border: 1px solid lightcoral;
   box-shadow: 10px 5px 5px rgb(160, 159, 159);
   i {
+    cursor: pointer;
     color: lightblue;
     padding-top: 2px;
     font-size: 20px;

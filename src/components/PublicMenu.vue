@@ -13,7 +13,7 @@
           <span>功能模块</span>
         </template>
         <el-menu-item-group title="Group One">
-          <el-menu-item index="1-1">节点动画</el-menu-item>
+          <el-menu-item index="1-1" @click="toNodeAnimation">节点动画</el-menu-item>
         </el-menu-item-group>
       </el-sub-menu>
     </el-menu>
@@ -21,6 +21,13 @@
 </template>
 
 <script setup>
+import {useRouter} from 'vue-router'
+import {ref} from 'vue'
+//路由跳转
+const router = useRouter()
+const toNodeAnimation = () => {
+  router.push({path:'/node'})
+}
 </script>
 
 <style scoped lang="scss">

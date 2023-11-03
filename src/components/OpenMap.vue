@@ -5,6 +5,7 @@
 <script setup>
 import * as Cesium from "cesium";
 import { onMounted } from "vue";
+import { app } from "../main";
 
 onMounted(() => {
   /* 地图初始化 */
@@ -22,7 +23,7 @@ onMounted(() => {
     animation: false,
     fullscreenButton: false,
   });
-  //   app.provide("viewer", viewer);
+  app.provide("viewer", viewer);
 });
 </script>
 

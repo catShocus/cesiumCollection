@@ -8,9 +8,9 @@ const router = createRouter({
             name:'home',
             component:() => import('../components/OpenMap.vue')
         },{
-            path:'/test',
-            name:'test',
-            component:() => import('../views/TestViewOne.vue')
+            path:'/node',
+            name:'node',
+            component:() => import('../views/NodeAnimationView.vue')        
         }
     ]
 })
