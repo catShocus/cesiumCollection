@@ -12,8 +12,13 @@
           <el-icon><location /></el-icon>
           <span>功能模块</span>
         </template>
-        <el-menu-item-group title="Group One">
-          <el-menu-item index="1-1" @click="toNodeAnimation">节点动画</el-menu-item>
+        <el-menu-item-group title="Cesium书籍">
+          <el-menu-item index="1-1" @click="toNodeAnimation"
+            >节点动画</el-menu-item
+          >
+          <el-menu-item index="1-2" @click="toConvertCoordinate"
+            >坐标转换</el-menu-item
+          >
         </el-menu-item-group>
       </el-sub-menu>
     </el-menu>
@@ -21,12 +26,15 @@
 </template>
 
 <script setup>
-import {useRouter} from 'vue-router'
-import {ref} from 'vue'
+import { useRouter } from "vue-router";
+import { ref } from "vue";
 //路由跳转
-const router = useRouter()
+const router = useRouter();
 const toNodeAnimation = () => {
-  router.push({path:'/node'})
+  router.push({ path: "/node" });
+};
+const toConvertCoordinate = () => {
+  router.push({path:'/coordinate'})
 }
 </script>
 

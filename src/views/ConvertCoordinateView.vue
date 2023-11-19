@@ -1,11 +1,11 @@
 <template>
-  <div id="node-animation">
-    <NodeAnimation></NodeAnimation>
+  <div id="convert-coordinate">
+    <ConvertCoordinate></ConvertCoordinate>
   </div>
 </template>
 
 <script setup>
-import NodeAnimationVue from "../components/nodeAnimation/NodeAnimation.vue";
+import ConvertCoordinate from "../components/convertCoordinate/ConvertCoordinate.vue";
 </script>
 
 <style scoped lang="scss">
@@ -15,6 +15,6 @@ import NodeAnimationVue from "../components/nodeAnimation/NodeAnimation.vue";
 //   left: 200px;
 //   right: 0;
 //   bottom: 0;
-// //   background: lightgreen;
+//   //   background: lightgreen;
 // }
 </style>

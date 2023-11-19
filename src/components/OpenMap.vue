@@ -1,5 +1,8 @@
 <template>
-  <div id="open-map"></div>
+  <div id="open-map">
+    <!-- <button>测试</button> -->
+  </div>
+
 </template>
 
 <script setup>

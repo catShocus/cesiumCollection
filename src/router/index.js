@@ -1,16 +1,22 @@
-import { createRouter,createWebHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
-    history:createWebHistory(),
-    routes:[
+    history: createWebHistory(),
+    routes: [
         {
-            path:'/',
-            name:'home',
-            component:() => import('../components/OpenMap.vue')
-        },{
-            path:'/node',
-            name:'node',
-            component:() => import('../views/NodeAnimationView.vue')        
+            path: '/',
+            name: 'home',
+            component: () => import('../components/PublicMenu.vue')
+        }, 
+        {
+            path: '/node',
+            name: 'node',
+            component: () => import('../views/NodeAnimationView.vue')
+        },
+        {
+            path:'/coordinate',
+            name:'coordinate',
+            component:() => import('../views/ConvertCoordinateView.vue')
         }
     ]
 })
