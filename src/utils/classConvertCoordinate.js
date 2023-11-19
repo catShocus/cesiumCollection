@@ -1,17 +1,18 @@
 /**
  * @brief Cesium坐标转换的方法类
  */
+import * as Cesium from 'cesium'
 class ConvertCoordinate {
     constructor(viewer) {
         this.viewer = viewer
     }
 
-    //屏幕坐标转世界坐标
+    //坐标拾取
     screenToCartesian3(px) {
         if (this.viewer && px) {
             let picks = this.viewer.scene.drillPick(px);
             let cartesian = null;
-            let isOn3dtiles = false,
+            let isOn3dtiles = false,    
                 isOnTerrain = false;
             // drillPick
             for (let i in picks) {
@@ -71,5 +72,34 @@ class ConvertCoordinate {
         }
 
     }
+
+    //坐标转换（WGS84 TO Cartesian）
+    transformWGS84ToCartesian(position, alt) {
+        if (this.viewer) {
+            return position
+                ? Cesium.Cartesian3.fromDegrees(
+                    position.lng || position.lon,
+                    position.lat,
+                    (position.alt = alt || position.alt),
+                    Cesium.Ellipsoid.WGS84
+                )
+                : Cesium.Cartesian3.ZERO;
+        }
+    }
+
+    //坐标转换（Cartesian to WGS84）
+    transformCartesianToWGS84(cartesian) {
+        if (this.viewer && cartesian) {
+            var ellipsoid = Cesium.Ellipsoid.WGS84;
+            var cartographic = ellipsoid.cartesianToCartographic(cartesian);
+            return {
+                lng: Cesium.Math.toDegrees(cartographic.longitude),
+                lat: Cesium.Math.toDegrees(cartographic.latitude),
+                alt: cartographic.height
+            };
+        }
+    }
+
+
 }
 export default ConvertCoordinate
