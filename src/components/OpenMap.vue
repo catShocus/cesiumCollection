@@ -25,6 +25,7 @@ onMounted(() => {
     timeline: false,
     animation: false,
     fullscreenButton: false,
+    shouldAnimate:true
   });
   app.provide("viewer", viewer);
 });

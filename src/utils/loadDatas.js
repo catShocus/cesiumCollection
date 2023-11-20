@@ -7,6 +7,7 @@ class LoadData {
     //构造函数
     constructor(viewer) {
         this.viewer = viewer;
+        this.model = null
     }
     //gltf数据加载
     addGltfModel(url) {
@@ -27,25 +28,32 @@ class LoadData {
             url: `${url}`,
             modelMatrix: newModelMatrix,
             minimumPixelSize: 128,
-            scale: 0.95
+            scale: 0.95,
         })
         this.viewer.scene.primitives.add(this.model)
 
         //模型初始加载时，去掉水面模型
         this.model.readyPromise.then(() => {
-            const waterNode = this.model.getNode('WDMSM001');
-            waterNode.show = false
+
         })
 
-        //相机视角
+
+        //相机视角漫游
         this.viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(118.797, 32.017, 200),
+            destination: Cesium.Cartesian3.fromDegrees(118.79571071071288, 32.0165083628853, 43.939026369824354),
             orientation: {
-                heading: Cesium.Math.toRadians(180),
-                pitch: -Cesium.Math.PI_OVER_TWO,
-                roll: Cesium.Math.toRadians(160)
-            }
+                heading: 1.191094628042772,
+                pitch: -0.14150746498186884,
+                roll: 0.0000029411615960484028
+            },
         })
+        return this.model
+    }
+
+    //数据清除
+    removeGltfData() {
+        this.viewer.scene.primitives.remove(this.model)
+        this.viewer.camera.flyHome(1)
     }
 }
 export default LoadData
