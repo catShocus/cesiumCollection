@@ -13,7 +13,7 @@ class ControlCabinet {
 
     //打开柜门
     openCabinet(model, cabinetArr) {
-        this.handler = this.viewer.screenSpaceEventHandler
+        this.handler = new Cesium.ScreenSpaceEventHandler(this.viewer.scene.canvas)
         this.handler.setInputAction((event) => {
             const pickedObject = this.viewer.scene.pick(event.position);
             if (
