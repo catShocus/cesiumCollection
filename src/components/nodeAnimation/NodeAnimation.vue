@@ -35,8 +35,8 @@ let controlBehindCabinet = [
   "fiveBehindCabinet",
   "sixBehindCabinet",
 ];
-let gateOpenHeight = reactive([]);
-// let controlCabinet;
+let gateOpenHeight = ref(null);
+let controlCabinet;
 // let index = 0
 //初始化数据
 function initData(url) {
@@ -51,7 +51,7 @@ onMounted(async () => {
   model = initData(url);
 
   //控制柜门开关
-  // controlCabinet = new ControlCabinet($viewer);
+  controlCabinet = new ControlCabinet($viewer);
   // controlCabinet.openCabinet(model, wdmgtNameArr);
   // controlCabinet.closeCabinet(model, wdmgtNameArr);
 
@@ -157,8 +157,6 @@ onMounted(async () => {
       if (node.name == currentNode.cabinetButton[3].name) {
         controlFrontCabinet[currentNode.id - 1].stopOpening();
       }
-
-      //上扉门停止按钮逻辑判断
     }
   }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 });
