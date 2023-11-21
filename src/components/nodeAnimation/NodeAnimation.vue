@@ -117,11 +117,10 @@ onMounted(async () => {
       ) {
         currentNode.cabinetButton[1].status = true;
         alert("下扉门开启成功");
-
         controlFrontCabinet[currentNode.id - 1].openFrontGateSelf(true, false);
 
         //通过setInterval获取抬升值
-        if (controlFrontCabinet[currentNode.id - 1].upDistance) {
+        /*   if (controlFrontCabinet[currentNode.id - 1].upDistance) {
           let gateUp = setInterval(() => {
             gateOpenHeight.value =
               controlFrontCabinet[currentNode.id - 1].upDistance.toFixed(3);
@@ -132,10 +131,10 @@ onMounted(async () => {
               return;
             }
           }, 50);
-        }
+        } */
 
         //通过侦听属性，最高后，抬升上扉门
-        watch(gateOpenHeight, (newValue) => {
+        /* watch(gateOpenHeight, (newValue) => {
           console.log(newValue, "---newValue");
           if (newValue >= 0.1) {
             let cabinetBehindNode = model.getNode(currentNode.gateBehindName);
@@ -150,7 +149,12 @@ onMounted(async () => {
               true
             );
           }
-        });
+        }); */
+      }
+
+      //下闸门关闭逻辑判断
+      if (node.name == currentNode.cabinetButton[2].name) {
+        controlFrontCabinet[currentNode.id - 1].openFrontGateSelf(false, false);
       }
 
       //下扉门停止按钮逻辑判断
