@@ -18,11 +18,11 @@ const router = createRouter({
             name:'coordinate',
             component:() => import('../views/ConvertCoordinateView.vue')
         },
-        {
-            path:'/arrow',
-            name:'arrow',
-            component:() => import('../views/DynamicArrowView.vue')
-        }
+        // {
+        //     path:'/arrow',
+        //     name:'arrow',
+        //     component:() => import('../views/DynamicArrowView.vue')
+        // }
     ]
 })
 

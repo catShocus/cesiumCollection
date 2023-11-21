@@ -29,7 +29,28 @@ export let gateNameArr = [
             {
                 name: 'WDM3FGT205',
                 status: false
-            }
+            },
+            /* 上扉门 */
+            {
+                name: 'WDM3FGT213',
+                status: false
+            },
+            {
+                name: 'WDM3FGT212',
+                status: false
+            },
+            {
+                name: 'WDM3FGT210',
+                status: false
+            },
+            {
+                name: 'WDM3FGT214',
+                status: false
+            },
+            {
+                name: 'WDM3FGT209',
+                status: false
+            },
         ],
         gateFrontName: 'WDMQBJ318',
         hoistFrontName: 'WDMQBJ331',
@@ -63,7 +84,28 @@ export let gateNameArr = [
             {
                 name: 'WDM3FGT172',
                 status: false
-            }
+            },
+            /* 上扉门 */
+            {
+                name: 'WDM3FGT180',
+                status: false
+            },
+            {
+                name: 'WDM3FGT179',
+                status: false
+            },
+            {
+                name: 'WDM3FGT177',
+                status: false
+            },
+            {
+                name: 'WDM3FGT181',
+                status: false
+            },
+            {
+                name: 'WDM3FGT176',
+                status: false
+            },
         ],
         gateFrontName: 'WDMQBJ314',
         hoistFrontName: 'WDMQBJ329',
@@ -97,7 +139,28 @@ export let gateNameArr = [
             {
                 name: 'WDM3FGT139',
                 status: false
-            }
+            },
+            /* 上扉门 */
+            {
+                name: 'WDM3FGT147',
+                status: false
+            },
+            {
+                name: 'WDM3FGT146',
+                status: false
+            },
+            {
+                name: 'WDM3FGT144',
+                status: false
+            },
+            {
+                name: 'WDM3FGT148',
+                status: false
+            },
+            {
+                name: 'WDM3FGT143',
+                status: false
+            },
         ],
         gateFrontName: 'WDMQBJ310',
         hoistFrontName: 'WDMQBJ327',
@@ -131,7 +194,28 @@ export let gateNameArr = [
             {
                 name: 'WDM3FGT106',
                 status: false
-            }
+            },
+            /* 上扉门 */
+            {
+                name: 'WDM3FGT114',
+                status: false
+            },
+            {
+                name: 'WDM3FGT113',
+                status: false
+            },
+            {
+                name: 'WDM3FGT111',
+                status: false
+            },
+            {
+                name: 'WDM3FGT115',
+                status: false
+            },
+            {
+                name: 'WDM3FGT110',
+                status: false
+            },
         ],
         gateFrontName: 'WDMQBJ306',
         hoistFrontName: 'WDMQBJ325',
@@ -165,7 +249,28 @@ export let gateNameArr = [
             {
                 name: 'WDM3FGT073',
                 status: false
-            }
+            },
+            /* 上扉门 */
+            {
+                name: 'WDM3FGT081',
+                status: false
+            },
+            {
+                name: 'WDM3FGT080',
+                status: false
+            },
+            {
+                name: 'WDM3FGT078',
+                status: false
+            },
+            {
+                name: 'WDM3FGT082',
+                status: false
+            },
+            {
+                name: 'WDM3FGT077',
+                status: false
+            },
         ],
         gateFrontName: 'WDMQBJ302',
         hoistFrontName: 'WDMQBJ323',
@@ -199,7 +304,28 @@ export let gateNameArr = [
             {
                 name: 'WDM3FGT007',
                 status: false
-            }
+            },
+            /* 上扉门 */
+            {
+                name: 'WDM3FGT015',
+                status: false
+            },
+            {
+                name: 'WDM3FGT014',
+                status: false
+            },
+            {
+                name: 'WDM3FGT012',
+                status: false
+            },
+            {
+                name: 'WDM3FGT016',
+                status: false
+            },
+            {
+                name: 'WDM3FGT011',
+                status: false
+            },
         ],
         gateFrontName: 'WDMQBJ152',
         hoistFrontName: 'WDMQBJ159',

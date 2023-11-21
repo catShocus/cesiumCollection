@@ -53,7 +53,7 @@ onMounted(async () => {
 
   //控制柜门开关
   // try {
-    controlCabinet = new ControlCabinet($viewer);
+  controlCabinet = new ControlCabinet($viewer);
   //   controlCabinet.openCabinet(model, wdmgtNameArr);
   //   controlCabinet.closeCabinet(model, wdmgtNameArr);
   // } catch (error) {
@@ -78,6 +78,7 @@ onMounted(async () => {
           currentNode = gate;
         }
       }
+      console.log(currentNode, "---currentNode");
       //启动按钮逻辑判断
       if (
         node.name != currentNode.cabinetButton[0].name &&
@@ -92,11 +93,12 @@ onMounted(async () => {
         currentNode.cabinetButton[0].status = true;
         let cabinetFrontNode = model.getNode(currentNode.gateFrontName);
         let hoistFrontNode = model.getNode(currentNode.hoistFrontName);
-
+        let ropeFrontNode = model.getNode("WDMQBJ320");
         controlFrontCabinet[currentNode.id - 1] = new GateController(
           $viewer,
           cabinetFrontNode,
-          hoistFrontNode
+          hoistFrontNode,
+          ropeFrontNode
         );
         ElMessage({
           message: "远控开启成功",
@@ -151,6 +153,20 @@ onMounted(async () => {
         });
         controlFrontCabinet[currentNode.id - 1].stopOpening();
       }
+
+      //下扉门分闸按钮逻辑判断
+      if (node.name == currentNode.cabinetButton[5].name) {
+        ElMessage({
+          message: "下扉门分闸",
+          type: "success",
+        });
+        //分闸之后，所有按钮状态为false
+        currentNode.cabinetFrontButton.forEach((item) => {
+          item.status = false;
+        });
+      }
+
+      //上扉门开启按钮逻辑判断
     }
   }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
 });
