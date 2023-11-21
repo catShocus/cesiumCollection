@@ -1,9 +1,9 @@
 <template>
   <div id="node-animation">
-    <div class="gateOpenHeight">
+    <!-- <div class="gateOpenHeight">
       <h4>开启高度：</h4>
       <span>{{ gateOpenHeight }}</span>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -37,6 +37,7 @@ let controlBehindCabinet = [
 ];
 let gateOpenHeight = ref(null);
 let controlCabinet;
+let gateHandler;
 // let index = 0
 //初始化数据
 function initData(url) {
@@ -52,7 +53,7 @@ onMounted(async () => {
 
   //控制柜门开关
   // try {
-  //   controlCabinet = new ControlCabinet($viewer);
+    controlCabinet = new ControlCabinet($viewer);
   //   controlCabinet.openCabinet(model, wdmgtNameArr);
   //   controlCabinet.closeCabinet(model, wdmgtNameArr);
   // } catch (error) {
@@ -60,7 +61,7 @@ onMounted(async () => {
   // }
 
   /* 闸门动画 */
-  var gateHandler = new Cesium.ScreenSpaceEventHandler($viewer.scene.canvas);
+  gateHandler = new Cesium.ScreenSpaceEventHandler($viewer.scene.canvas);
   gateHandler.setInputAction(async (event) => {
     const pickedObject = $viewer.scene.pick(event.position);
     if (
@@ -158,37 +159,38 @@ onMounted(async () => {
 onUnmounted(() => {
   loadGltfData.removeGltfData();
   controlCabinet.destroyHandler();
+  gateHandler && gateHandler.destroy();
 });
 </script>
 
 <style scoped lang='scss'>
-#node-animation {
-  position: absolute;
-  top: 53px;
-  left: 200px;
-  width: 300px;
-  padding-bottom: 5px;
-  height: 200px;
-  border: 5px solid rgb(143, 236, 210);
-  border-radius: 10px;
-  .gateOpenHeight {
-    display: flex;
-    align-items: center;
-    border-bottom: 3px solid rgba(9, 105, 78, 0.5);
-    margin-top: 5px;
-    padding-bottom: 5px;
-    h4 {
-      color: aqua;
-    }
-    span {
-      display: inline-block;
-      color: white;
-      border-radius: 5px;
-      border: 2px solid rgb(77, 151, 151);
-      width: 200px;
-      height: 25px;
-      overflow: hidden;
-    }
-  }
-}
+// #node-animation {
+//   position: absolute;
+//   top: 53px;
+//   left: 200px;
+//   width: 300px;
+//   padding-bottom: 5px;
+//   height: 200px;
+//   border: 5px solid rgb(143, 236, 210);
+//   border-radius: 10px;
+//   .gateOpenHeight {
+//     display: flex;
+//     align-items: center;
+//     border-bottom: 3px solid rgba(9, 105, 78, 0.5);
+//     margin-top: 5px;
+//     padding-bottom: 5px;
+//     h4 {
+//       color: aqua;
+//     }
+//     span {
+//       display: inline-block;
+//       color: white;
+//       border-radius: 5px;
+//       border: 2px solid rgb(77, 151, 151);
+//       width: 200px;
+//       height: 25px;
+//       overflow: hidden;
+//     }
+//   }
+// }
 </style>

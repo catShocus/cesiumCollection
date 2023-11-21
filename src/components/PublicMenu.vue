@@ -19,6 +19,9 @@
           <el-menu-item index="1-2" @click="toConvertCoordinate"
             >坐标转换</el-menu-item
           >
+           <el-menu-item index="1-3" @click="toDynamicArrow"
+            >流线箭头</el-menu-item
+          >
         </el-menu-item-group>
       </el-sub-menu>
     </el-menu>
@@ -35,6 +38,9 @@ const toNodeAnimation = () => {
 };
 const toConvertCoordinate = () => {
   router.push({path:'/coordinate'})
+};
+const toDynamicArrow = () => {
+  router.push({path:'/arrow'})
 }
 </script>
 
