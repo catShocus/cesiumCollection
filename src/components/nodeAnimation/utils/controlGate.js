@@ -12,19 +12,20 @@ class GateController {
         this.viewer = viewer
     }
     //控制抬升
-    openFrontGateSelf(type) {
+    openFrontGateSelf(type,behind) {
         if (this.intervalGate) {
             this.stopOpening()
             console.log(this.intervalGate, '---this.intervalGate')
         }
         this.intervalGate = setInterval(() => {
-            if (this.upDistance <= 0 || this.upDistance >= 0.1) {
+            let upHeight = behind? 0.05 : 0.1 ;
+            if (this.upDistance <= 0 || this.upDistance >= upHeight) {
                 this.stopOpening();
                 return;
             }
             let step = type ? 0.01 : -0.01
             this.upDistance += type ? 0.0001 : -0.0001
-            this.angle += type? -0.01 : 0.01;
+            this.angle += type ? -0.01 : 0.01;
             // 上闸门
             this.gateNode.matrix = Cesium.Matrix4.multiplyTransformation(
                 this.gateNode.matrix,
