@@ -40,4 +40,7 @@ onMounted(() => {
   right: 0;
   bottom: 0;
 }
+.cesium-credit-logoContainer{
+  display: none;
+}
 </style>

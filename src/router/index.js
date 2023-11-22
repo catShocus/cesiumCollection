@@ -22,7 +22,7 @@ const router = createRouter({
             path:'/arrow',
             name:'arrow',
             component:() => import('../views/DynamicArrowView.vue')
-        }
+        },
     ]
 })
 

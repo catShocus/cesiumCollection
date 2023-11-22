@@ -5,10 +5,13 @@
       <span>{{ gateOpenHeight }}</span>
     </div> -->
   </div>
+  <!-- 第二个viewer -->
+  <NodeAnimationTwo :viewerTwoClickNode="viewerTwoClickNode"></NodeAnimationTwo>
 </template>
 
 <script setup>
 import * as Cesium from "cesium";
+import NodeAnimationTwo from "./NodeAnimationTwo.vue";
 import { onMounted, inject, onUnmounted, watch, ref, reactive } from "vue";
 import LoadData from "../../utils/loadDatas";
 import ControlCabinet from "./utils/controlCabinet";
@@ -38,6 +41,10 @@ let controlBehindCabinet = [
 let gateOpenHeight = ref(null);
 let controlCabinet;
 let gateHandler;
+let viewerTwoClickNode = reactive({
+  clickGateNode: null,
+  clickHoistNode: null,
+});
 // let index = 0
 //初始化数据
 function initData(url) {
@@ -47,6 +54,18 @@ function initData(url) {
 
 onMounted(async () => {
   $viewer = inject("viewer");
+
+  let a = document.getElementById("node-animation");
+  const camera = new Cesium.Camera(a);
+  camera.position = new Cesium.Cartesian3();
+  camera.direction = Cesium.Cartesian3.negate(
+    Cesium.Cartesian3.UNIT_Z,
+    new Cesium.Cartesian3()
+  );
+  camera.up = Cesium.Cartesian3.clone(Cesium.Cartesian3.UNIT_Y);
+  camera.frustum.fov = Cesium.Math.PI_OVER_THREE;
+  camera.frustum.near = 1.0;
+  camera.frustum.far = 2.0;
   //加载gltf数据
   let url = "/src/assets/cabinet_animation_data/柜门动画原点调整.glb";
   model = initData(url);
@@ -91,14 +110,16 @@ onMounted(async () => {
         return;
       } else if (node.name == currentNode.cabinetButton[0].name) {
         currentNode.cabinetButton[0].status = true;
+
         let cabinetFrontNode = model.getNode(currentNode.gateFrontName);
+
         let hoistFrontNode = model.getNode(currentNode.hoistFrontName);
-        let ropeFrontNode = model.getNode("WDMQBJ320");
+        // let ropeFrontNode = model.getNode("WDMQBJ320");
         controlFrontCabinet[currentNode.id - 1] = new GateController(
           $viewer,
           cabinetFrontNode,
-          hoistFrontNode,
-          ropeFrontNode
+          hoistFrontNode
+          // ropeFrontNode
         );
         ElMessage({
           message: "远控开启成功",
@@ -133,6 +154,8 @@ onMounted(async () => {
           message: "下扉门开启成功",
           type: "success",
         });
+        viewerTwoClickNode.clickGateNode = currentNode.gateFrontName;
+        viewerTwoClickNode.clickHoistNode = currentNode.hoistFrontName;
         controlFrontCabinet[currentNode.id - 1].openFrontGateSelf(true, false);
       }
 
@@ -161,7 +184,7 @@ onMounted(async () => {
           type: "success",
         });
         //分闸之后，所有按钮状态为false
-        currentNode.cabinetFrontButton.forEach((item) => {
+        currentNode.cabinetButton.forEach((item) => {
           item.status = false;
         });
       }
@@ -180,33 +203,33 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang='scss'>
-// #node-animation {
-//   position: absolute;
-//   top: 53px;
-//   left: 200px;
-//   width: 300px;
-//   padding-bottom: 5px;
-//   height: 200px;
-//   border: 5px solid rgb(143, 236, 210);
-//   border-radius: 10px;
-//   .gateOpenHeight {
-//     display: flex;
-//     align-items: center;
-//     border-bottom: 3px solid rgba(9, 105, 78, 0.5);
-//     margin-top: 5px;
-//     padding-bottom: 5px;
-//     h4 {
-//       color: aqua;
-//     }
-//     span {
-//       display: inline-block;
-//       color: white;
-//       border-radius: 5px;
-//       border: 2px solid rgb(77, 151, 151);
-//       width: 200px;
-//       height: 25px;
-//       overflow: hidden;
-//     }
-//   }
-// }
+#node-animation {
+  position: absolute;
+  top: 53px;
+  left: 200px;
+  width: 300px;
+  padding-bottom: 5px;
+  height: 200px;
+  border: 5px solid rgb(143, 236, 210);
+  border-radius: 10px;
+  .gateOpenHeight {
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid rgba(9, 105, 78, 0.5);
+    margin-top: 5px;
+    padding-bottom: 5px;
+    h4 {
+      color: aqua;
+    }
+    span {
+      display: inline-block;
+      color: white;
+      border-radius: 5px;
+      border: 2px solid rgb(77, 151, 151);
+      width: 200px;
+      height: 25px;
+      overflow: hidden;
+    }
+  }
+}
 </style>
