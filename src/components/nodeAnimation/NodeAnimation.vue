@@ -55,17 +55,17 @@ function initData(url) {
 onMounted(async () => {
   $viewer = inject("viewer");
 
-  let a = document.getElementById("node-animation");
-  const camera = new Cesium.Camera(a);
-  camera.position = new Cesium.Cartesian3();
-  camera.direction = Cesium.Cartesian3.negate(
-    Cesium.Cartesian3.UNIT_Z,
-    new Cesium.Cartesian3()
-  );
-  camera.up = Cesium.Cartesian3.clone(Cesium.Cartesian3.UNIT_Y);
-  camera.frustum.fov = Cesium.Math.PI_OVER_THREE;
-  camera.frustum.near = 1.0;
-  camera.frustum.far = 2.0;
+  // let a = document.getElementById("node-animation");
+  // const camera = new Cesium.Camera(a);
+  // camera.position = new Cesium.Cartesian3();
+  // camera.direction = Cesium.Cartesian3.negate(
+  //   Cesium.Cartesian3.UNIT_Z,
+  //   new Cesium.Cartesian3()
+  // );
+  // camera.up = Cesium.Cartesian3.clone(Cesium.Cartesian3.UNIT_Y);
+  // camera.frustum.fov = Cesium.Math.PI_OVER_THREE;
+  // camera.frustum.near = 1.0;
+  // camera.frustum.far = 2.0;
   //加载gltf数据
   let url = "/src/assets/cabinet_animation_data/柜门动画原点调整.glb";
   model = initData(url);
