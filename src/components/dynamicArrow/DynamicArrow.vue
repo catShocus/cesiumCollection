@@ -4,7 +4,7 @@
 
 <script setup>
 import * as Cesium from "cesium";
-import { onMounted, inject } from "vue";
+import { onMounted, inject, onUnmounted } from "vue";
 import ImageLineMaterial from "./utils/ImageLineMaterial.js";
 import arrowImg from "./assest/3365a3fd0f23d571fce6672f010c970.png";
 let $viewer;
@@ -26,6 +26,12 @@ onMounted(() => {
     },
   });
   $viewer.zoomTo(model);
+});
+
+//组件解绑
+onUnmounted(() => {
+  $viewer.entities.removeAll();
+  $viewer.camera.flyHome(1);
 });
 </script>
 <style scoped lang='scss'>

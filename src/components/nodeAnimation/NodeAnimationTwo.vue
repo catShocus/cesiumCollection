@@ -4,7 +4,7 @@
 
 <script setup>
 import * as Cesium from "cesium";
-import { onMounted, defineProps, watch } from "vue";
+import { onMounted,watch } from "vue";
 import LoadData from "../../utils/loadDatas";
 import GateController from "./utils/controlGate";
 //组件传值
