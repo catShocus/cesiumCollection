@@ -10,7 +10,6 @@ import arrowImg from "./assest/3365a3fd0f23d571fce6672f010c970.png";
 let $viewer;
 onMounted(() => {
   $viewer = inject("viewer");
-  console.log(Object.isExtensible(ImageLineMaterial), "---测试");
   let model = $viewer.entities.add({
     polyline: {
       positions: Cesium.Cartesian3.fromDegreesArrayHeights([
