@@ -50,6 +50,16 @@ class LoadData {
         return this.model
     }
 
+    //geoJson数据加载
+    addGeojson(url) {
+        let geojsonData = `${url}`
+        Cesium.GeoJsonDataSource.load(geojsonData).then(res => {
+            data = res
+            this.viewer.entities.add(data.entities.values[0]);
+            this.viewer.zoomTo(data.entities.values[0])
+        })
+    }
+
     //数据清除
     removeGltfData() {
         this.viewer.scene.primitives.remove(this.model)
