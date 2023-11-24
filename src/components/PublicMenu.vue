@@ -22,6 +22,9 @@
           <el-menu-item index="1-3" @click="toDynamicArrow"
             >流线箭头</el-menu-item
           >
+          <el-menu-item index="1-4" @click="toLoadGeojson"
+            >加载Geojson</el-menu-item
+          >
         </el-menu-item-group>
       </el-sub-menu>
     </el-menu>
@@ -41,6 +44,9 @@ const toConvertCoordinate = () => {
 };
 const toDynamicArrow = () => {
   router.push({ path: "/arrow" });
+};
+const toLoadGeojson = () => {
+  router.push({ path: "/geojson" });
 };
 </script>
 

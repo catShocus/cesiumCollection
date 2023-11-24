@@ -7,7 +7,7 @@ import cesium from 'vite-plugin-cesium'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(),cesium(),
+  plugins: [vue(), cesium(),
   AutoImport({
     resolvers: [ElementPlusResolver()]
   }),
@@ -15,4 +15,13 @@ export default defineConfig({
     resolvers: [ElementPlusResolver()]
   })
   ],
+  server: {
+    proxy: {
+      "/files_": {
+        target: "http://192.168.0.141/files",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/files_/, ""),
+      },
+    },
+  },
 })

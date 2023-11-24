@@ -23,6 +23,11 @@ const router = createRouter({
             name:'arrow',
             component:() => import('../views/DynamicArrowView.vue')
         },
+        {
+            path:'/geojson',
+            name:'geojson',
+            component:() => import('../views/LoadGeojsonView.vue')
+        }
     ]
 })
 
