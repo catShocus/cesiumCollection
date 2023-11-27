@@ -5,12 +5,11 @@
 import * as Cesium from 'cesium'
 class LoadData {
     //构造函数
-    constructor(viewer) {
-        this.viewer = viewer;
+    constructor() {
         this.model = null
     }
     //gltf数据加载
-    addGltfModel(url) {
+    addGltfModel(url, viewer) {
         //设定模型的位置，东北上坐标系，朝向
         let origin = Cesium.Cartesian3.fromDegrees(118.7975, 32.0171, -6)
         let modelMatrix = Cesium.Transforms.eastNorthUpToFixedFrame(origin)
@@ -30,7 +29,7 @@ class LoadData {
             minimumPixelSize: 128,
             scale: 0.95,
         })
-        this.viewer.scene.primitives.add(this.model)
+        viewer.scene.primitives.add(this.model)
 
         //模型初始加载时，去掉水面模型
         this.model.readyPromise.then(() => {
@@ -39,7 +38,7 @@ class LoadData {
 
 
         //相机视角漫游
-        this.viewer.camera.flyTo({
+        viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(118.79571071071288, 32.0165083628853, 43.939026369824354),
             orientation: {
                 heading: 1.191094628042772,
@@ -51,18 +50,18 @@ class LoadData {
     }
 
     //geoJson数据加载
-    addGeojson(url) {
+    addGeojson(url, viewer) {
         let geojsonData = `${url}`
         Cesium.GeoJsonDataSource.load(geojsonData).then(res => {
             console.log(res, '---res')
             let data = res
-            this.viewer.entities.add(data.entities.values[0]);
-            this.viewer.zoomTo(data.entities.values[0])
+            viewer.entities.add(data.entities.values[0]);
+            viewer.zoomTo(data.entities.values[0])
         })
     }
 
     //数据清除
-    removeGltfData() {
+    removeGltfData(viewer) {
         this.viewer.scene.primitives.remove(this.model)
         this.viewer.camera.flyHome(1)
     }
