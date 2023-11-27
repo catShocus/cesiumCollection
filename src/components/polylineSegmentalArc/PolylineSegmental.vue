@@ -2,7 +2,7 @@
   <div id="polyline-segmental"></div>
 </template>
 <script setup>
-import { onMounted, inject } from "vue";
+import { onMounted, inject, onUnmounted } from "vue";
 import PolylineSegmental from "./utils/classAddPolylineSegmental";
 import * as Cesium from "cesium";
 
@@ -22,6 +22,10 @@ onMounted(() => {
   addPolylineSegment.addPurpleArrow($viewer);/* 直线段 */
   addPolylineSegment.addDashedLine($viewer);/* 蓝色虚直线 */
 });
+
+onUnmounted(() => {
+    $viewer.entities.removeAll()
+})
 </script>
 <style scoped lang='scss'>
 </style>

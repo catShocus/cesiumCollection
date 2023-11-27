@@ -2,7 +2,7 @@
   <div id="geadual-textcure"></div>
 </template>
 <script setup>
-import { onMounted, inject } from "vue";
+import { onMounted, inject, onUnmounted } from "vue";
 import * as Cesium from "cesium";
 let $viewer;
 let grd;
@@ -44,6 +44,10 @@ onMounted(() => {
     },
   });
   $viewer.flyTo($viewer.entities);
+});
+
+onUnmounted(() => {
+  $viewer.entities.removeAll();
 });
 </script>
 <style scoped lang='scss'>
