@@ -28,6 +28,9 @@
           <el-menu-item index="1-5" @click="toCustomGeometry"
             >自定义形状</el-menu-item
           >
+          <el-menu-item index="1-6" @click="toPolylineSegmental"
+            >polyline弧段线</el-menu-item
+          >
         </el-menu-item-group>
       </el-sub-menu>
     </el-menu>
@@ -53,6 +56,9 @@ const toLoadGeojson = () => {
 };
 const toCustomGeometry = () => {
   router.push({ path: "/custom" });
+};
+const toPolylineSegmental = () => {
+  router.push({ path: "/segmental" });
 };
 </script>
 

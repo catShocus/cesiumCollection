@@ -31,8 +31,13 @@ const router = createRouter({
             path:'/custom',
             name:'custom',
             component:() => import('../views/CustomGeometryView.vue')
+        },
+        {
+            path:'/segmental',
+            name:'segmental',
+            component:() => import('../views/PolylineSegmentalView.vue')
         }
     ]
-})
+})  
 
 export default router

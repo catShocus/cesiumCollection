@@ -3,7 +3,6 @@
 </template>
 <script setup>
 import * as Cesium from "cesium";
-import ComputeCirculate from "./utils/computeCirculateFlight";
 import { onMounted, inject, onUnmounted } from "vue";
 import AddCustomPolygon from "./utils/addPolygon";
 
