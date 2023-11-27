@@ -36,6 +36,11 @@ const router = createRouter({
             path:'/segmental',
             name:'segmental',
             component:() => import('../views/PolylineSegmentalView.vue')
+        },
+        {
+            path:'/textcure',
+            name:'textcure',
+            component:() => import('../views/GradualTextcureView.vue')
         }
     ]
 })  

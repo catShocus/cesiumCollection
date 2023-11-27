@@ -31,6 +31,9 @@
           <el-menu-item index="1-6" @click="toPolylineSegmental"
             >polyline弧段线</el-menu-item
           >
+          <el-menu-item index="1-7" @click="toGradualTextcure"
+            >渐变纹理</el-menu-item
+          >
         </el-menu-item-group>
       </el-sub-menu>
     </el-menu>
@@ -59,6 +62,11 @@ const toCustomGeometry = () => {
 };
 const toPolylineSegmental = () => {
   router.push({ path: "/segmental" });
+};
+const toGradualTextcure = () => {
+  router.push({
+    path: "/textcure",
+  });
 };
 </script>
 
