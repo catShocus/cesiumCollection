@@ -32,6 +32,7 @@ let cartesian3 = reactive({
 });
 onMounted(() => {
   $viewer = inject("viewer");
+  $viewer.camera.flyHome(1) 
   const convertCoordinate = new ConvertCordinate($viewer);
   //点击获取屏幕坐标
   handler = new Cesium.ScreenSpaceEventHandler($viewer.scene.canvas);

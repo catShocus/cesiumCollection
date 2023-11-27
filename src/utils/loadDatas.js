@@ -36,7 +36,6 @@ class LoadData {
 
         })
 
-
         //相机视角漫游
         viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(118.79571071071288, 32.0165083628853, 43.939026369824354),
@@ -62,14 +61,14 @@ class LoadData {
 
     //数据清除
     removeGltfData(viewer) {
-        this.viewer.scene.primitives.remove(this.model)
-        this.viewer.camera.flyHome(1)
+        viewer.scene.primitives.remove(this.model)
+        // viewer.camera.flyHome(1) 
     }
 
     //geojson数据清除
-    removeGeojson() {
-        this.viewer.entities.removeAll()
-        this.viewer.camera.flyHome(1)
+    removeGeojson(viewer) {
+        viewer.entities.removeAll()
+        viewer.camera.flyHome(1)
     }
 }
 export default LoadData

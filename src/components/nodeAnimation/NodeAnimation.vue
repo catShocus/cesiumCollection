@@ -1,12 +1,9 @@
 <template>
   <div id="node-animation"></div>
-  <!-- 第二个viewer -->
-  <NodeAnimationTwo :viewerTwoClickNode="viewerTwoClickNode"></NodeAnimationTwo>
 </template>
 
 <script setup>
 import * as Cesium from "cesium";
-import NodeAnimationTwo from "./NodeAnimationTwo.vue";
 import { onMounted, inject, onUnmounted, watch, ref, reactive } from "vue";
 import LoadData from "../../utils/loadDatas";
 import ControlCabinet from "./utils/controlCabinet";
@@ -42,16 +39,16 @@ let viewerTwoClickNode = reactive({
 });
 // let index = 0
 //初始化数据
-function initData(url) {
-  loadGltfData = new LoadData($viewer);
-  return loadGltfData.addGltfModel(url);
+function initData(url, viewer) {
+  loadGltfData = new LoadData();
+  return loadGltfData.addGltfModel(url, viewer);
 }
 
 onMounted(async () => {
   $viewer = inject("viewer");
   //加载gltf数据
   let url = "/src/assets/cabinet_animation_data/柜门动画原点调整.glb";
-  model = initData(url);
+  model = initData(url, $viewer);
 
   //控制柜门开关
   // try {
@@ -179,40 +176,40 @@ onMounted(async () => {
 
 //事件解绑，防止其影响下一组件
 onUnmounted(() => {
-  loadGltfData.removeGltfData();
+  loadGltfData.removeGltfData($viewer);
   controlCabinet.destroyHandler();
   gateHandler && gateHandler.destroy();
 });
 </script>
 
 <style scoped lang='scss'>
-#node-animation {
-  position: absolute;
-  top: 53px;
-  left: 200px;
-  width: 300px;
-  padding-bottom: 5px;
-  height: 200px;
-  border: 5px solid rgb(143, 236, 210);
-  border-radius: 10px;
-  .gateOpenHeight {
-    display: flex;
-    align-items: center;
-    border-bottom: 3px solid rgba(9, 105, 78, 0.5);
-    margin-top: 5px;
-    padding-bottom: 5px;
-    h4 {
-      color: aqua;
-    }
-    span {
-      display: inline-block;
-      color: white;
-      border-radius: 5px;
-      border: 2px solid rgb(77, 151, 151);
-      width: 200px;
-      height: 25px;
-      overflow: hidden;
-    }
-  }
-}
+// #node-animation {
+//   position: absolute;
+//   top: 53px;
+//   left: 200px;
+//   width: 300px;
+//   padding-bottom: 5px;
+//   height: 200px;
+//   border: 5px solid rgb(143, 236, 210);
+//   border-radius: 10px;
+//   .gateOpenHeight {
+//     display: flex;
+//     align-items: center;
+//     border-bottom: 3px solid rgba(9, 105, 78, 0.5);
+//     margin-top: 5px;
+//     padding-bottom: 5px;
+//     h4 {
+//       color: aqua;
+//     }
+//     span {
+//       display: inline-block;
+//       color: white;
+//       border-radius: 5px;
+//       border: 2px solid rgb(77, 151, 151);
+//       width: 200px;
+//       height: 25px;
+//       overflow: hidden;
+//     }
+//   }
+// }
 </style>

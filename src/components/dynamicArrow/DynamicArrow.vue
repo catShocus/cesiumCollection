@@ -30,7 +30,7 @@ onMounted(() => {
 //组件解绑
 onUnmounted(() => {
   $viewer.entities.removeAll();
-  $viewer.camera.flyHome(1);
+  // $viewer.camera.flyHome(1);
 });
 </script>
 <style scoped lang='scss'>

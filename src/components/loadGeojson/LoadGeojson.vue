@@ -12,12 +12,6 @@ import axios from "axios";
 let $viewer;
 
 //加载geojson
-let loadGeojson;
-function initLoadGeojson(viewer) {
-  loadGeojson = new LoadData(viewer);
-  let url = "/src/components/loadGeojson/assest/南京市.geojson";
-  loadGeojson.addGeojson(url);
-}
 onMounted(async () => {
   $viewer = inject("viewer");
   const { data } = await axios.get(
@@ -38,7 +32,8 @@ onMounted(async () => {
 });
 
 onUnmounted(() => {
-  loadGeojson.removeGeojson();
+  $viewer.entities.removeAll();
+  // $viewer.camera.flyHome(1);
 });
 </script>
 <style scoped lang='scss'>

@@ -12,15 +12,21 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted, inject } from "vue";
 import { useRouter } from "vue-router";
 import OpenMap from "./components/OpenMap.vue";
 import PublicMenuVue from "./components/PublicMenu.vue";
+
+let $viewer;
+onMounted(() => {
+  $viewer = inject("viewer");
+});
 
 //路由跳转
 const router = useRouter();
 const toHome = () => {
   router.push({ path: "/" });
+  $viewer.camera.flyHome(1);
 };
 </script>
 
