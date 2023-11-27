@@ -27,6 +27,10 @@ const router = createRouter({
             path:'/geojson',
             name:'geojson',
             component:() => import('../views/LoadGeojsonView.vue')
+        },{
+            path:'/custom',
+            name:'custom',
+            component:() => import('../views/CustomGeometryView.vue')
         }
     ]
 })

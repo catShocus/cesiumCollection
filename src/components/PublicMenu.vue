@@ -25,6 +25,9 @@
           <el-menu-item index="1-4" @click="toLoadGeojson"
             >加载Geojson</el-menu-item
           >
+          <el-menu-item index="1-5" @click="toCustomGeometry"
+            >自定义形状</el-menu-item
+          >
         </el-menu-item-group>
       </el-sub-menu>
     </el-menu>
@@ -47,6 +50,9 @@ const toDynamicArrow = () => {
 };
 const toLoadGeojson = () => {
   router.push({ path: "/geojson" });
+};
+const toCustomGeometry = () => {
+  router.push({ path: "/custom" });
 };
 </script>
 
