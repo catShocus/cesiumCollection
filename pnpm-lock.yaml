@@ -11,6 +11,9 @@ dependencies:
   cesium:
     specifier: '1.98'
     version: 1.98.1
+  cesium-navigation-es6:
+    specifier: ^3.0.8
+    version: 3.0.8
   element-plus:
     specifier: ^2.4.1
     version: 2.4.1(vue@3.3.7)
@@ -579,6 +582,12 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       fill-range: 7.0.1
+
+  /cesium-navigation-es6@3.0.8:
+    resolution: {integrity: sha512-RyoY9T02fE9pRNgXCmOD8QlSV5XJ2LPf+O9IpYEkTcyiUztOIwVQwdeT0heHvk+R1eM8jAG6YnRPvfyDsRonEA==}
+    dependencies:
+      cesium: 1.98.1
+    dev: false
 
   /cesium@1.98.1:
     resolution: {integrity: sha512-qMtsZaTftsniWu+gJRThkxHuR8T/y59VMUB0zu5tUpTRWk/cYI5+0zbohMBUWV3JNdb9MiCqlYcIqLwMfN1h4w==}

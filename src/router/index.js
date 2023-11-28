@@ -51,6 +51,11 @@ const router = createRouter({
             path:'/dynamicCzml',
             name:'dynamicCzml',
             component:() => import('../views/DynamicCzmlView.vue')
+        },
+        {
+            path:'/loadControl',
+            name:'loadControl',
+            component:() => import('../views/LoadControlView.vue')
         }
     ]
 })  

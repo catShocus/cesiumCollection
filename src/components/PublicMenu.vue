@@ -12,7 +12,7 @@
           <el-icon><location /></el-icon>
           <span>功能模块</span>
         </template>
-        <el-menu-item-group title="Cesium书籍">
+        <el-menu-item-group title="Cesium入门">
           <el-menu-item
             v-for="item in routerArr"
             :key="item.id"
@@ -75,6 +75,11 @@ let routerArr = [
     id: 9,
     routerName: "动态CZML",
     routerPath: "/dynamicCzml",
+  },
+  {
+    id: 10,
+    routerName: "控件加载",
+    routerPath: "/loadControl",
   },
 ];
 const router = useRouter();
