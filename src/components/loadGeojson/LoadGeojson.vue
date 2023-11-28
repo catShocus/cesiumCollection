@@ -25,7 +25,7 @@ onMounted(async () => {
       material: new ImageLineMaterial({
         image: arrowImg,
       }),
-      width: 5,
+      width: 10,
     },
   });
   $viewer.zoomTo(polyline);
