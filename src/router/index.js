@@ -46,6 +46,11 @@ const router = createRouter({
             path:'/clamp',
             name:'clamp',
             component:() => import('../views/ClampGroundView.vue')
+        },
+        {
+            path:'/dynamicCzml',
+            name:'dynamicCzml',
+            component:() => import('../views/DynamicCzmlView.vue')
         }
     ]
 })  

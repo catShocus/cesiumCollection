@@ -13,29 +13,12 @@
           <span>功能模块</span>
         </template>
         <el-menu-item-group title="Cesium书籍">
-          <el-menu-item index="1-1" @click="toNodeAnimation"
-            >节点动画</el-menu-item
-          >
-          <el-menu-item index="1-2" @click="toConvertCoordinate"
-            >坐标转换</el-menu-item
-          >
-          <el-menu-item index="1-3" @click="toDynamicArrow"
-            >流线箭头</el-menu-item
-          >
-          <el-menu-item index="1-4" @click="toLoadGeojson"
-            >加载Geojson</el-menu-item
-          >
-          <el-menu-item index="1-5" @click="toCustomGeometry"
-            >自定义形状</el-menu-item
-          >
-          <el-menu-item index="1-6" @click="toPolylineSegmental"
-            >polyline弧段线</el-menu-item
-          >
-          <el-menu-item index="1-7" @click="toGradualTextcure"
-            >渐变纹理</el-menu-item
-          >
-          <el-menu-item index="1-8" @click="toClampGround"
-            >贴地线</el-menu-item
+          <el-menu-item
+            v-for="item in routerArr"
+            :key="item.id"
+            :index="`1-${item.id}`"
+            @click="toRouterPush(item.id)"
+            >{{ item.routerName }}</el-menu-item
           >
         </el-menu-item-group>
       </el-sub-menu>
@@ -47,35 +30,62 @@
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 //路由跳转
+let routerArr = [
+  {
+    id: 1,
+    routerName: "节点动画",
+    routerPath: "/node",
+  },
+  {
+    id: 2,
+    routerName: "坐标转换",
+    routerPath: "/coordinate",
+  },
+  {
+    id: 3,
+    routerName: "流线箭头",
+    routerPath: "/arrow",
+  },
+  {
+    id: 4,
+    routerName: "加载Geojson",
+    routerPath: "/geojson",
+  },
+  {
+    id: 5,
+    routerName: "自定义形状",
+    routerPath: "/custom",
+  },
+  {
+    id: 6,
+    routerName: "polyline弧段线",
+    routerPath: "/segmental",
+  },
+  {
+    id: 7,
+    routerName: "渐变纹理",
+    routerPath: "/textcure",
+  },
+  {
+    id: 8,
+    routerName: "贴地线",
+    routerPath: "/clamp",
+  },
+  {
+    id: 9,
+    routerName: "动态CZML",
+    routerPath: "/dynamicCzml",
+  },
+];
 const router = useRouter();
-const toNodeAnimation = () => {
-  router.push({ path: "/node" });
-};
-const toConvertCoordinate = () => {
-  router.push({ path: "/coordinate" });
-};
-const toDynamicArrow = () => {
-  router.push({ path: "/arrow" });
-};
-const toLoadGeojson = () => {
-  router.push({ path: "/geojson" });
-};
-const toCustomGeometry = () => {
-  router.push({ path: "/custom" });
-};
-const toPolylineSegmental = () => {
-  router.push({ path: "/segmental" });
-};
-const toGradualTextcure = () => {
+const toRouterPush = (id) => {
+  let clickName = routerArr.find((item) => {
+    return item.id == id;
+  });
   router.push({
-    path: "/textcure",
+    path: `${clickName.routerPath}`,
   });
 };
-const toClampGround = () => {
-  router.push({
-    path:'/clamp'
-  })
-}
 </script>
 
 <style scoped lang="scss">
