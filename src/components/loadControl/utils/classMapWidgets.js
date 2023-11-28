@@ -5,9 +5,7 @@
 import * as Cesium from 'cesium'
 import CesiumNavigation from "cesium-navigation-es6";
 class MapWidgets {
-    constructor() {
 
-    }
     //设置地图控件
     setMapWidgets(viewer) {
         let options = {}
