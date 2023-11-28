@@ -41,6 +41,11 @@ const router = createRouter({
             path:'/textcure',
             name:'textcure',
             component:() => import('../views/GradualTextcureView.vue')
+        },
+        {
+            path:'/clamp',
+            name:'clamp',
+            component:() => import('../views/ClampGroundView.vue')
         }
     ]
 })  

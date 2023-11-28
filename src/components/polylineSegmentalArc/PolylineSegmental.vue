@@ -15,6 +15,7 @@ let a = {
 };
 onMounted(() => {
   $viewer = inject("viewer");
+  $viewer.camera.flyHome(1)
   addPolylineSegment.addRedLine($viewer);
   addPolylineSegment.addGreenRhumbLine($viewer);/* 恒定航向弧线 */
   addPolylineSegment.addGlowingLine($viewer);/* 发光线 */

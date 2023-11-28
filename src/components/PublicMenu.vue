@@ -34,6 +34,9 @@
           <el-menu-item index="1-7" @click="toGradualTextcure"
             >渐变纹理</el-menu-item
           >
+          <el-menu-item index="1-8" @click="toClampGround"
+            >贴地线</el-menu-item
+          >
         </el-menu-item-group>
       </el-sub-menu>
     </el-menu>
@@ -68,6 +71,11 @@ const toGradualTextcure = () => {
     path: "/textcure",
   });
 };
+const toClampGround = () => {
+  router.push({
+    path:'/clamp'
+  })
+}
 </script>
 
 <style scoped lang="scss">

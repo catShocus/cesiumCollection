@@ -1,6 +1,7 @@
 /**
  * @brief 实现Cesium1.98各种数据加载的方法类
  * @param {String} url gltf的地址
+ * @param {Array} linePositions 线坐标的一维数组
  */
 import * as Cesium from 'cesium'
 class LoadData {
@@ -59,6 +60,39 @@ class LoadData {
         })
     }
 
+    //添加实体线
+    addEntityPoint(viewer, linePositions) {
+        let lineEntity = viewer.entities.add({
+            name: 'add entity line',
+            polyline: {
+                positions: Cesium.Cartesian3.fromDegreesArray(linePositions),
+                width: 2,
+                material: Cesium.Color.RED,
+                clampToGround: true
+            }
+        })
+        return lineEntity
+    }
+
+    //通过图元添加贴底线
+    addPromitiveLine(viewer, linePositions) {
+        viewer.scene.primitives.add(
+            new Cesium.GroundPrimitive({
+                geometryInstances: new Cesium.GeometryInstance({
+                    geometry: new Cesium.CorridorGeometry({
+                        vertexFormat: Cesium.VertexFormat.POSITION_ONLY,
+                        positions: Cesium.Cartesian3.fromDegreesArray(linePositions),
+                        width: 40
+                    }),
+                    attributes: {
+                        color: Cesium.ColorGeometryInstanceAttribute.fromColor(new Cesium.Color(0.0, 1.0, 0.0, 0.5))
+                    }
+                }),
+                classificationType: Cesium.ClassificationType.TERRAIN
+            }),
+        )
+    }
+
     //数据清除
     removeGltfData(viewer) {
         viewer.scene.primitives.remove(this.model)
@@ -68,7 +102,8 @@ class LoadData {
     //geojson数据清除
     removeGeojson(viewer) {
         viewer.entities.removeAll()
-        viewer.camera.flyHome(1)
+        // viewer.scene.primitives.removeAll()
+        // viewer.camera.flyHome(1)
     }
 }
 export default LoadData

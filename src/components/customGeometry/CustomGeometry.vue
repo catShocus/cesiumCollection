@@ -5,11 +5,14 @@
 import * as Cesium from "cesium";
 import { onMounted, inject, onUnmounted } from "vue";
 import AddCustomPolygon from "./utils/addPolygon";
+import MapConfig from "../../utils/classMapConfig";
 
 let $viewer;
 const sectorPolygon = new AddCustomPolygon();
+
 onMounted(() => {
   $viewer = inject("viewer");
+
   sectorPolygon.addPolygon($viewer);
   sectorPolygon.addTraversePolygon($viewer);
 });
