@@ -14,10 +14,10 @@
         </template>
         <el-menu-item-group title="Cesium入门">
           <el-menu-item
-            v-for="item in routerArr"
+            v-for="item in routerPrimierArr"
             :key="item.id"
             :index="`1-${item.id}`"
-            @click="toRouterPush(item.id)"
+            @click="toRouterPush({ id: item.id, type: item.type })"
             >{{ item.routerName }}</el-menu-item
           >
         </el-menu-item-group>
@@ -29,10 +29,10 @@
         </template>
         <el-menu-item-group title="Cesium进阶">
           <el-menu-item
-            v-for="item in routerArr"
+            v-for="item in routerIntermediateArr"
             :key="item.id"
-            :index="`1-${item.id}`"
-            @click="toRouterPush(item.id)"
+            :index="`2-${item.id}`"
+            @click="toRouterPush({ id: item.id, type: item.type })"
             >{{ item.routerName }}</el-menu-item
           >
         </el-menu-item-group>
@@ -45,62 +45,80 @@
 import { useRouter } from "vue-router";
 import { ref } from "vue";
 //路由跳转
-let routerArr = [
+let routerPrimierArr = [
   {
     id: 1,
+    type: "primier",
+    routerName: "坐标转换",
+    routerPath: "/coordinate",
+  },
+  {
+    id: 2,
+    type: "primier",
+    routerName: "流线箭头",
+    routerPath: "/arrow",
+  },
+  {
+    id: 3,
+    type: "primier",
+    routerName: "加载Geojson",
+    routerPath: "/geojson",
+  },
+  {
+    id: 4,
+    type: "primier",
+    routerName: "自定义形状",
+    routerPath: "/custom",
+  },
+  {
+    id: 5,
+    type: "primier",
+    routerName: "polyline弧段线",
+    routerPath: "/segmental",
+  },
+  {
+    id: 6,
+    type: "primier",
+    routerName: "渐变纹理",
+    routerPath: "/textcure",
+  },
+  {
+    id: 7,
+    type: "primier",
+    routerName: "贴地线",
+    routerPath: "/clamp",
+  },
+  {
+    id: 8,
+    type: "primier",
+    routerName: "控件加载",
+    routerPath: "/loadControl",
+  },
+];
+let routerIntermediateArr = [
+  {
+    id: 1,
+    type: "intermediate",
     routerName: "节点动画",
     routerPath: "/node",
   },
   {
     id: 2,
-    routerName: "坐标转换",
-    routerPath: "/coordinate",
-  },
-  {
-    id: 3,
-    routerName: "流线箭头",
-    routerPath: "/arrow",
-  },
-  {
-    id: 4,
-    routerName: "加载Geojson",
-    routerPath: "/geojson",
-  },
-  {
-    id: 5,
-    routerName: "自定义形状",
-    routerPath: "/custom",
-  },
-  {
-    id: 6,
-    routerName: "polyline弧段线",
-    routerPath: "/segmental",
-  },
-  {
-    id: 7,
-    routerName: "渐变纹理",
-    routerPath: "/textcure",
-  },
-  {
-    id: 8,
-    routerName: "贴地线",
-    routerPath: "/clamp",
-  },
-  {
-    id: 9,
+    type: "intermediate",
     routerName: "动态CZML",
     routerPath: "/dynamicCzml",
   },
-  {
-    id: 10,
-    routerName: "控件加载",
-    routerPath: "/loadControl",
-  },
 ];
 const router = useRouter();
-const toRouterPush = (id) => {
-  let clickName = routerArr.find((item) => {
-    return item.id == id;
+let currentArray;
+const toRouterPush = (curentObject) => {
+  if (curentObject.type === "primier") {
+    currentArray = routerPrimierArr;
+  } else {
+    currentArray = routerIntermediateArr;
+  }
+  let clickName = currentArray.find((item) => {
+    return item.id == curentObject.id;
   });
   router.push({
     path: `${clickName.routerPath}`,
