@@ -10,9 +10,24 @@
       <el-sub-menu index="1">
         <template #title>
           <el-icon><location /></el-icon>
-          <span>功能模块</span>
+          <span>入门模块</span>
         </template>
         <el-menu-item-group title="Cesium入门">
+          <el-menu-item
+            v-for="item in routerArr"
+            :key="item.id"
+            :index="`1-${item.id}`"
+            @click="toRouterPush(item.id)"
+            >{{ item.routerName }}</el-menu-item
+          >
+        </el-menu-item-group>
+      </el-sub-menu>
+      <el-sub-menu index="2">
+        <template #title>
+          <el-icon><location /></el-icon>
+          <span>进阶模块</span>
+        </template>
+        <el-menu-item-group title="Cesium进阶">
           <el-menu-item
             v-for="item in routerArr"
             :key="item.id"
