@@ -94,6 +94,12 @@ let routerPrimierArr = [
     routerName: "控件加载",
     routerPath: "/loadControl",
   },
+  {
+    id: 9,
+    type: "primier",
+    routerName: "纹理贴图",
+    routerPath: "/primitiveTextcure",
+  },
 ];
 let routerIntermediateArr = [
   {

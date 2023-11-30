@@ -56,6 +56,11 @@ const router = createRouter({
             path:'/loadControl',
             name:'loadControl',
             component:() => import('../views/LoadControlView.vue')
+        },
+        {
+            path:'/primitiveTextcure',
+            name:'primitiveTextcure',
+            component:() => import('../views/PrimitiveTextcureView.vue')
         }
     ]
 })  
