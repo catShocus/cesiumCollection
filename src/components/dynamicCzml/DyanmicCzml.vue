@@ -6,43 +6,44 @@
 </template>
 <script setup>
 import * as Cesium from "cesium";
-import { czml } from "./data/czml";
+import DynamicCzml from "./utils/classDynamicCzml";
 import { onMounted, inject, onUnmounted } from "vue";
 
 let $viewer;
-let czmlInterval;
-//开启按钮
+const setDynamicCzml = new DynamicCzml();
+
+//开启动态
 const startButton = () => {
-  rstCzml($viewer);
+  setDynamicCzml.startDynamic($viewer);
 };
 
-//结束按钮
+//停止动态
 const endButton = () => {
-  clearInterval(czmlInterval);
+  setDynamicCzml.stopDynamic();
 };
-
-function rstCzml(viewer) {
-  let dataSourcePromise;
-  let i = 30.957024;
-  let a = 60;
-  czmlInterval = setInterval(() => {
-    i += 0.0001;
-    a += 10;
-    czml[1].position.cartographicDegrees.push(a, 118.8747338, i, 0);
-    czml[0].clock.currentTime = viewer.clock.currentTime.toString();
-    viewer.entities.removeAll();
-    viewer.dataSources.add(Cesium.CzmlDataSource.load(czml));
-  }, 1000);
-  dataSourcePromise = Cesium.CzmlDataSource.load(czml);
-  viewer.dataSources.add(dataSourcePromise);
-  viewer.zoomTo(dataSourcePromise);
-}
 
 onMounted(() => {
   $viewer = inject("viewer");
+  $viewer.camera.flyTo({
+    destination: Cesium.Cartesian3.fromDegrees(
+      118.87841653400005,
+      30.95679870500004,
+      0.0
+    ),
+    orientation: {
+      // heading: Cesium.Math.toRadians(1.191094628042772),
+      // pitch: -Cesium.Math.PI_OVER_TWO,
+      // roll: Cesium.Math.toRadians(0.0000029411615960484028)
+      heading: 1.191094628042772,
+      pitch: -0.14150746498186884,
+      roll: 0.0000029411615960484028,
+    },
+  });
 });
 
-onUnmounted(() => {});
+onUnmounted(() => {
+  setDynamicCzml.clearDatas($viewer);
+});
 </script>
 <style scoped lang='scss'>
 #dynamic-czml {
