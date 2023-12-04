@@ -114,6 +114,12 @@ let routerIntermediateArr = [
     routerName: "动态CZML",
     routerPath: "/dynamicCzml",
   },
+  {
+    id: 3,
+    type: "intermediate",
+    routerName: "添加标签",
+    routerPath: "/addLabel",
+  },
 ];
 const router = useRouter();
 let currentArray;
